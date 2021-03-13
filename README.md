@@ -2,9 +2,9 @@
 
 本项目用于整理师门所需常用仿真程序。
 
-$$\dot{x}(t)=\sum_iA_ix(t-\tau_i)+\sum_iB_ix(t-\tau_i)$$
 
 
+$\dot{x}(t)=\sum_iA_ix(t-\tau_i)+\sum_iB_ix(t-\tau_i)$
 
 
 
