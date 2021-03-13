@@ -1,4 +1,4 @@
-function []=panding( Ai,taui,n  )
+function [W,pzend]=panding( Ai,taui,n  )
 
 %Ai 以元胞数组形式
 %An+1 为A_0
@@ -109,7 +109,7 @@ function []=panding( Ai,taui,n  )
 		end
 	end
 	
-	W=  round(   abs(Argpz(length(Argpz))-Argpz(1))/(2*pi)  )
+	W=  round(   abs(Argpz(length(Argpz))-Argpz(1))/(2*pi)  );
 	
 	
 	% plot(Argpz)

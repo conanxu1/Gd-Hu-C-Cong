@@ -1,0 +1,92 @@
+\documentclass[11pt,twoside,a4paper]{article}
+\usepackage[slantfont,boldfont]{xeCJK}
+\usepackage{fontspec}
+\setCJKmainfont{SimSun}
+\setmainfont{SimSun}
+\setsansfont{SimSun}
+\begin{document}
+考虑系统
+$$\dot{x}(t)=\sum_{i=1}^{n}A_ix(t-\tau_i)$$
+
+
+
+\begin{table}[htbp]
+\caption{panding.m}  % 表格标题
+	\label{table1}  % 用于索引表格的标签
+	\begin{tabular}{|c|c|} 
+\hline
+函数原型& [W,pzend]=panding( Ai,taui,n  )\\
+\hline
+功能& 判断以$A_i$为系数,$\tau_i$为延时量的系统是否稳定\\
+\hline
+输入项& $Ai$ 元胞数组形式$\tau_i$数组形式\\
+\hline
+输出项&W不稳定根个数,pzend为$P(z)$的轨迹\\
+\hline
+算法&通过离散半圆,计算$P(z)$.用matlab的angle函数计算幅角.\\
+&并将幅角的变化量连续化.\\
+\hline
+\end{tabular}
+\end{table}
+注：
+\begin{itemize}
+\item 此程序最为需要注意的是，在$P(z)$比较接近$0$时 ,幅角的变化快,从而导致结果不准确.这涉及参考文章中提到的tolerance $δ$
+\end{itemize}
+
+参考文章
+<DELAY-DEPENDENT STABILITY OF RUNGE–KUTTA
+METHODS FOR LINEAR NEUTRAL SYSTEMS
+WITH MULTIPLE DELAYS>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
