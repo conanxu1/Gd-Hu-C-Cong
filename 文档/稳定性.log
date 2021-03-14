@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.3.13)  13 MAR 2021 20:23
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.3.13)  14 MAR 2021 20:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -338,17 +338,24 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 5.
-Missing character: There is no δ in font cmmi10!
+LaTeX Font Info:    Font shape `TU/SimSun(0)/m/sl' in size <10.95> not availabl
+e
+(Font)              Font shape `TU/SimSun(0)/m/it' tried instead on input line 
+42.
  [1
 
-] (./稳定性.aux) ) 
+] [2] (./稳定性.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6928 strings out of 479418
- 206744 string characters out of 5886785
- 492637 words of memory out of 5000000
- 24404 multiletter control sequences out of 15000+600000
- 535303 words of font info for 49 fonts, out of 8000000 for 9000
+ 6941 strings out of 479418
+ 207106 string characters out of 5886785
+ 493637 words of memory out of 5000000
+ 24411 multiletter control sequences out of 15000+600000
+ 535335 words of font info for 53 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  56i,8n,68p,343b,255s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 稳定性.pdf (1 page).
+Output written on 稳定性.pdf (2 pages).
