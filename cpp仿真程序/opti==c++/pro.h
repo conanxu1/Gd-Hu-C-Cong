@@ -19,6 +19,8 @@ using namespace std;
 #define USE_OPENCV
 #ifdef USE_OPENCV
 #include <opencv2/opencv.hpp>
+#include"use_opencv.hpp"
+using namespace Legendre;
 #endif
 
 

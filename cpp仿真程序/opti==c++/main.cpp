@@ -8,6 +8,11 @@
 #include "ex1.h"
 #endif
 
+#define USE_OPENCV
+#ifdef USE_OPENCV
+#include <opencv2/opencv.hpp>
+#include"use_opencv.hpp"
+#endif
 
 
 
@@ -20,9 +25,14 @@ int main()
 
 
 
-double da=Legendre::an(0);
+double* da=Legendre::P_n(3);
 
-cout<<da;
+
+for(int i=0;i<=3;i++)
+{
+cout<<da[i]<<endl;
+}
+cout<<endl;
 
 
 
