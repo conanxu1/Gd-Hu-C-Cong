@@ -37,4 +37,32 @@ dae\_f &   $R^n\times R^n\times R \mapsto R^n$ & 微分代数方程类型$f(x,u,
 
 
 
+
+
+\section{求解器使用说明}
+类Euler\_Ode\_Sol继承自DAE\_Solver
+
+类DAE\_Solver计划设计一个代数微分方程求解器
+
+类Euler\_Ode\_Sol是线性微分方程求解器
+dx/dt=Ax+Bu
+
+\begin{itemize}
+\item 第一步Euler\_Ode\_Sol(dimx,dimu,t0,tf,分点数);//构造函数
+\item 第二步 Euler\_Ode\_Sol.set(Rmn tA,Rmn tB,Rn\_f tu,Rn x0);//矩阵输入函数初值
+\item 第三步Euler\_Ode\_Sol.sol( );//求解
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}

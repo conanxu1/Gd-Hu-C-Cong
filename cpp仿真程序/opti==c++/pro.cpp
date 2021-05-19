@@ -610,6 +610,10 @@ R L_zero(Rn x ,      Rn u     ,double        t )
 
 
 
+
+
+//< -------------------Euler 仿真
+
 void Euler_Ode_Sol::set(Rmn tA,Rmn tB,Rn_f tu ,Rn x0)
 {
 	this->tA=tA;
@@ -787,7 +791,7 @@ cout<<totaltime;
 */
 
 }
-
+//------------------->Euler 仿真
 
 
 
