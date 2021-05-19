@@ -7,6 +7,10 @@
 #define _EX1_H_
 #include "ex1.h"
 #endif
+
+
+
+
  
 
 int main()
@@ -14,26 +18,31 @@ int main()
 
 
 
+
+
+double da=Legendre::an(0);
+
+cout<<da;
+
+
+
+//<---欧拉法示例
 double ttA[2*2]={1,2,3,4};
 double ttB[2*1]={-2,1};
 double tx0[2]={1,1};
-
 Rmn A=Rmninit(dimx,dimx);
 Rmn B=Rmninit(dimx,dimu);
 Rn x0=Rninit(dimx);
-
-
-
-
-
 Rmn_copy(ttA,A,dimx,dimx);
 Rmn_copy(ttB,B,dimx,dimu);
 Rn_copy(tx0,x0,dimx);
-
-
 Euler_Ode_Sol hSol(dimx,dimu,t0,tf,100000000);
 hSol.set(A,B,myut,x0 );
 hSol.sol( );
+//--->
+
+
+
 
 
 //test();
