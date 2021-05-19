@@ -1,4 +1,7 @@
-#include"pro.h"
+#ifndef _PRO_H_
+#define _PRO_H_
+	#include "pro.h"
+#endif
  
 using namespace cv;
 
