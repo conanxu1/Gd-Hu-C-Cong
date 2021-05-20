@@ -16,12 +16,32 @@
 
 
 
- 
+
+
+
 
 int main()
 {
 
+double x=7;
+double ann[]={6,5,4,3};
 
+
+x=Legendre::Poly_Sub(x,ann,3);
+cout<<x<<endl<<endl;
+
+
+//-------------------------------
+
+
+Pro_Scale* Ex1_Scale;
+Pro_Scale Ex1_S;
+Ex1_Scale=&Ex1_S;
+
+Ex1_Scale->dimx=2;
+Ex1_Scale->dimu=1;
+Ex1_Scale->t0=0;
+Ex1_Scale->tf=2;
 
 
 
@@ -41,14 +61,14 @@ Legendre::Polynomial_Root(da,5);
 double ttA[2*2]={1,2,3,4};
 double ttB[2*1]={-2,1};
 double tx0[2]={1,1};
-Rmn A=Rmninit(dimx,dimx);
-Rmn B=Rmninit(dimx,dimu);
-Rn x0=Rninit(dimx);
-Rmn_copy(ttA,A,dimx,dimx);
-Rmn_copy(ttB,B,dimx,dimu);
-Rn_copy(tx0,x0,dimx);
-Euler_Ode_Sol hSol(dimx,dimu,t0,tf,100000000);
-hSol.set(A,B,myut,x0 );
+Rmn A=Rmninit(Ex1_Scale->dimx,Ex1_Scale->dimx);
+Rmn B=Rmninit(Ex1_Scale->dimx,Ex1_Scale->dimu);
+Rn x0=Rninit(Ex1_Scale->dimx);
+Rmn_copy(ttA,A,Ex1_Scale->dimx,Ex1_Scale->dimx);
+Rmn_copy(ttB,B,Ex1_Scale->dimx,Ex1_Scale->dimu);
+Rn_copy(tx0,x0,Ex1_Scale->dimx);
+Euler_Ode_Sol hSol(Ex1_Scale->dimx,Ex1_Scale->dimu,Ex1_Scale->t0,Ex1_Scale->tf,100000000);
+hSol.set(A,B,Pro1::myut,x0 );
 hSol.sol( );
 //--->
 

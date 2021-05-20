@@ -28,20 +28,20 @@ namespace Legendre{
 	double* P_n(int n)
 	{
 
-		double* rs=(double *)malloc((n+1)*sizeof(double) );
+		double* a_n=(double *)malloc((n+1)*sizeof(double) );
 
 
 		 
 		if(n==0)
 		{
-			 rs[0]=0;
-			 return rs;
+			 a_n[0]=0;
+			 return a_n;
 		}
 		if(n==1)
 		{
-			 rs[0]=0;
-			rs[1]=1;
-			return rs;
+			 a_n[0]=0;
+			a_n[1]=1;
+			return a_n;
 		}
 
 
@@ -83,7 +83,7 @@ namespace Legendre{
 				}
 			}
 			
-		for(int j=n;j>=0;j--)rs[j]=coef2[j];
+		for(int j=n;j>=0;j--)a_n[j]=coef2[j];
 			
 		free(coef1);	
 		free(coef2);	
@@ -92,13 +92,37 @@ namespace Legendre{
 		coef2=NULL;
 		tm    =NULL;
 			
-		return rs;
+		return a_n;
 		}
 		
 		
 		
-	return rs;
+	return a_n;
 	}
+	
+	
+double Poly_Sub(double x,double* a_n,int N)
+{
+	double s=0;
+	if(N==0)
+	{
+		s=a_n[0];
+		return s;
+	}
+	
+	s=a_n[N]*x+a_n[N-1];
+	
+	
+	
+	for(int i=N-1;i>=1;i--)
+	{
+		s=s*x+a_n[i-1];
+	}
+	return s;
+}
+	
+	
+	
 	
 
 void Polynomial_Root(double* coef,int n)
@@ -118,3 +142,8 @@ cout << "Roots: channels = " << roots.channels() << " , values = " << roots << "
 }
 
 }
+
+
+
+
+
