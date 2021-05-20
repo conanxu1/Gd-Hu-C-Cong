@@ -94,17 +94,20 @@ namespace Legendre{
 	}
 	
 
+void Polynomial_Root(double* coef,int n)
+{
+Mat coefn= (Mat_ <double>(n, 1)   );
 
 
+for(int i=0;i<=n;i++)
+{
+CV_MAT_ELEM(*coefn,double, i, 0) = coef[i];
+}
 
-
-// // // void test()
-// // // {
-// // // Mat coef= (Mat_ <double>(3, 1) << 1, - 2, 1 );
-// // // Mat roots;
-// // // solvePoly(coef, roots);
-// // // cout<< typeid(roots).name();
-// // // cout << "Roots: channels = " << roots.channels() << " , values = " << roots << ".";
-// // // }
+Mat roots;
+solvePoly(coefn, roots);
+cout<< typeid(roots).name();
+cout << "Roots: channels = " << roots.channels() << " , values = " << roots << ".";
+}
 
 }

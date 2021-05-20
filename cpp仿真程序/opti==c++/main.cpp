@@ -25,10 +25,10 @@ int main()
 
 
 
-double* da=Legendre::P_n(3);
+double* da=Legendre::P_n(80);
 
 
-for(int i=0;i<=3;i++)
+for(int i=0;i<=80;i++)
 {
 cout<<da[i]<<endl;
 }
