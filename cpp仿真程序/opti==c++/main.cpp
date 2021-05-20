@@ -25,15 +25,16 @@ int main()
 
 
 
-double* da=Legendre::P_n(80);
+double* da=Legendre::P_n(5);
 
 
-for(int i=0;i<=80;i++)
+for(int i=0;i<=5;i++)
 {
 cout<<da[i]<<endl;
 }
 cout<<endl;
 
+Legendre::Polynomial_Root(da,5);
 
 
 //<---欧拉法示例

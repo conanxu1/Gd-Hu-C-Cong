@@ -634,7 +634,7 @@ void Euler_Ode_Sol:: sol( )
   Rn temxt=Rninit(dimx);
 
 	double tnow;
-	cout<<"N:"<<(this->lenN)<<endl;
+	cout<<"\nN:"<<(this->lenN)<<endl;
 	this->h=(this->tf-this->t0)/(this->lenN);
 
 	(this->solt)=(R*)malloc( (lenN+1)*sizeof(R ));

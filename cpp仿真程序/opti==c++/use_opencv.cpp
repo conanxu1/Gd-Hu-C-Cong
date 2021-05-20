@@ -85,6 +85,13 @@ namespace Legendre{
 			
 		for(int j=n;j>=0;j--)rs[j]=coef2[j];
 			
+		free(coef1);	
+		free(coef2);	
+		free(tm);	
+		coef1=NULL;
+		coef2=NULL;
+		tm    =NULL;
+			
 		return rs;
 		}
 		
@@ -96,16 +103,16 @@ namespace Legendre{
 
 void Polynomial_Root(double* coef,int n)
 {
-Mat coefn= (Mat_ <double>(n, 1)   );
-
+cv::Mat coefn= (cv::Mat_ <double>(n, 1)   );
+uchar* datar = coefn.data; 
 
 for(int i=0;i<=n;i++)
 {
-CV_MAT_ELEM(*coefn,double, i, 0) = coef[i];
+datar[i*coefn.step+0]  = coef[i];
 }
 
-Mat roots;
-solvePoly(coefn, roots);
+cv::Mat roots;
+cv::solvePoly(coefn, roots);
 cout<< typeid(roots).name();
 cout << "Roots: channels = " << roots.channels() << " , values = " << roots << ".";
 }
