@@ -100,7 +100,115 @@ namespace Legendre{
 	return a_n;
 	}
 	
+
 	
+	
+	
+	
+		
+
+		
+		
+		
+		
+	//cite:<Spectral/hp Element Methods for CFD>
+
+	
+	double Initial_Guess(int i,int m)
+	{	return -cos((2*i+1)* 4.0*atan(1.0)/(2*m)    )	;}	
+		
+
+	double* Legendre_Root(int m)
+	{
+		double* a_n=P_n(m);
+		double* b_n=dP_n(a_n,m);
+		double* xk=(double *)malloc((m)*sizeof(double));	
+		
+		double r=0,s=0,delta=0;
+		double ep=1e-15,Pmab=0,dPmab=0;
+		
+		// print_vec(a_n,m+1);
+		
+	
+		for(int k=0;k<m;k++)
+		{
+			r=Initial_Guess(k,m);
+			
+			if(k>0) r=(r+xk[k-1])/2;
+			
+			do{
+				s=0;
+				for(int i=0;i<k;i++)
+				{
+					s=s+1.0/(r-xk[i]);
+				}
+				Pmab=Poly_Sub(r,a_n,m);
+				dPmab=Poly_Sub(r,b_n,m-1);
+				delta=-Pmab/( dPmab-Pmab*s );
+				r=r+delta;
+				}while(fabs(delta)>ep);
+				xk[k]=r;			
+			}
+			
+			sort(xk,xk+m);
+			
+			free(a_n);
+			free(b_n);
+ 
+			a_n=NULL;
+			b_n=NULL;
+		
+			
+			return xk;
+		}
+		
+		
+		
+		//cite:<Ledendre多项式零点的一种求解方法及应用>
+		
+		double* Legendre_Wk(int m)
+		{
+			double* wk=(double*)malloc(m*sizeof(double));
+			double* xk=Legendre_Root(m);
+			double* pn=P_n(m-1);
+			double* pnn=P_n(m);			
+			double* dpn=dP_n(pnn,m);
+			
+			double pn1_xk,dpn_xk;
+			
+			for(int i=0;i<m;i++)
+			{
+				pn1_xk=Poly_Sub(xk[i],pn,m-1);
+				dpn_xk=Poly_Sub(xk[i],dpn,m-1);
+				
+				wk[i]=2.0/m/pn1_xk/dpn_xk;
+				 
+			}
+		return wk;
+		}
+ 
+
+}
+
+
+
+
+
+
+double* dP_n(double* a_n,int N)
+{
+	double* b_n=(double *)malloc((N)*sizeof(double));	
+	for(int i=N-1;i>=0;i--)
+	{
+		b_n[i]=a_n[i+1]*(i+1);	
+	}
+	return b_n;
+}
+
+
+
+
+//秦九韶算法
 double Poly_Sub(double x,double* a_n,int N)
 {
 	double s=0;
@@ -109,40 +217,13 @@ double Poly_Sub(double x,double* a_n,int N)
 		s=a_n[0];
 		return s;
 	}
-	
 	s=a_n[N]*x+a_n[N-1];
-	
-	
-	
 	for(int i=N-1;i>=1;i--)
 	{
 		s=s*x+a_n[i-1];
 	}
 	return s;
 }
-	
-	
-	
-	
-
-void Polynomial_Root(double* coef,int n)
-{
-cv::Mat coefn= (cv::Mat_ <double>(n, 1)   );
-uchar* datar = coefn.data; 
-
-for(int i=0;i<=n;i++)
-{
-datar[i*coefn.step+0]  = coef[i];
-}
-
-cv::Mat roots;
-cv::solvePoly(coefn, roots);
-cout<< typeid(roots).name();
-cout << "Roots: channels = " << roots.channels() << " , values = " << roots << ".";
-}
-
-}
-
 
 
 

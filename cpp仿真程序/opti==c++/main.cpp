@@ -27,8 +27,17 @@ double x=7;
 double ann[]={6,5,4,3};
 
 
-x=Legendre::Poly_Sub(x,ann,3);
-cout<<x<<endl<<endl;
+
+double* dp=Legendre::Legendre_Root(6);
+print_vec(dp,6); 
+free(dp);
+
+
+dp=Legendre::Legendre_Wk(6);
+print_vec(dp,6); 
+
+while(1==1)
+x=1;
 
 
 //-------------------------------
@@ -54,7 +63,7 @@ cout<<da[i]<<endl;
 }
 cout<<endl;
 
-Legendre::Polynomial_Root(da,5);
+//Legendre::Polynomial_Root(da,5);
 
 
 //<---欧拉法示例

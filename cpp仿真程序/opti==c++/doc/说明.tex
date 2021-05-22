@@ -38,6 +38,27 @@ dae\_f &   $R^n\times R^n\times R \mapsto R^n$ & 微分代数方程类型$f(x,u,
 
 
 
+\begin{table}[h]
+\centering  % 显示位置为中间
+\caption{函数的说明}  % 表格标题
+\label{table1}  % 用于索引表格的标签
+\begin{tabular}{|c|c|c|} 
+\hline
+Legendre::P\_n(int n)  &    n次多项式的系数     &              \\
+\hline
+Legendre::Initial\_Guess(int i,int m); &   切比雪夫点初值猜测&  \\
+ \hline
+Legendre::Legendre\_Root(int m); & 勒让德多项式的零点 &  \\
+ \hline
+Legendre:: Legendre\_Wk(int m);   & 高斯勒让德求积系数 &  \\
+ \hline
+ 
+\end{tabular}
+\end{table}
+
+
+ 
+
 
 \section{求解器使用说明}
 类Euler\_Ode\_Sol继承自DAE\_Solver
