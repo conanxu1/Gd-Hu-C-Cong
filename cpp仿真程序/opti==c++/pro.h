@@ -93,6 +93,9 @@ void print_vec(T_Rn x,int n);
 
 
 
+void print_mat(double* Ma,int m,int n);
+
+
 
 //具体问题中的一些数据结构
 

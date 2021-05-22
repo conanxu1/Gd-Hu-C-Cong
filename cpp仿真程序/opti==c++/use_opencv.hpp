@@ -4,9 +4,9 @@ double Initial_Guess(int i,int m);
 double* Legendre_Root(int m);
 double* Legendre_Wk(int m);
 
-
-
-
+double* LGL_Root(int m);
+double* LGL_Wk(int m);
+double* LGL_Dki(int m);
 
 }
 

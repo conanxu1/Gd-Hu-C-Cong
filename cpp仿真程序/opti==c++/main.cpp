@@ -27,17 +27,35 @@ double x=7;
 double ann[]={6,5,4,3};
 
 
-
+cout<<"hhh";
 double* dp=Legendre::Legendre_Root(6);
+cout<<"hhh";
+
+
+
 print_vec(dp,6); 
 free(dp);
+dp=NULL;
+
+cout<<"-----\n";
+dp=Legendre::LGL_Root(2);
+print_vec(dp,3); 
+free(dp);
+dp=NULL;
 
 
-dp=Legendre::Legendre_Wk(6);
-print_vec(dp,6); 
 
-while(1==1)
-x=1;
+dp=Legendre::LGL_Wk(2);
+print_vec(dp,3); 
+free(dp);
+dp=NULL;
+
+
+double* tDki=Legendre::LGL_Dki(2);
+print_mat(tDki,3,3);
+ 
+free(tDki);
+tDki=NULL;
 
 
 //-------------------------------

@@ -182,6 +182,24 @@ template <typename T_Rn>
 	}
 
 
+void print_mat(double* Ma,int m,int n)
+	{
+		cout<<"\n[\n";
+		for(int i=0;i<m;i++)
+		{
+			for(int j=0;j<n;j++)
+			{
+				cout<<setprecision(10)<<Ma[i*m+j]<<",";
+			}
+			cout<<endl;
+		}		
+		cout<<"]\n";
+		
+	}
+
+
+
+
 
 
 
