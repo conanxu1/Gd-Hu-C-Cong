@@ -38,8 +38,8 @@ free(dp);
 dp=NULL;
 
 cout<<"-----\n";
-dp=Legendre::LGL_Root(2);
-print_vec(dp,3); 
+dp=Legendre::LGL_Root(19);
+print_vec(dp,20); 
 free(dp);
 dp=NULL;
 

@@ -329,16 +329,9 @@ namespace Legendre{
 		
 		for(int i=0;i<=m;i++)
 		for(int j=0;j<i;j++)
-		{
-			
-			cout<<i<<","<<j<<endl;
-			cout<<pn_xk[i]<<","<<pn_xk[j]<<endl;
-			cout<<tau_k[i]<<","<<tau_k[j]<<endl;
-			
+		{ 
 			Dki[i*(m+1)+j]=pn_xk[i]/pn_xk[j]/(tau_k[i]-tau_k[j]);
-			cout<< Dki[i*(m+1)+j] <<endl<<endl;
-			
-		}
+		 }
 		for(int i=0;i<=m;i++)
 		for(int j=m;j>i;j--)
 		{
