@@ -30,15 +30,12 @@ Linear DDE Solver
 
 
 
-1. sudo *apt*-get install g++ cmake make
-2.  sudo *apt*-get install libnlopt-dev
+1. sudo apt-get install g++ cmake make
+2.  sudo apt-get install libnlopt-dev
 3. sudo apt install libopencv-dev
 4. sudo apt-get install libeigen3-dev 
 5. sudo apt install libopenblas-dev libopenblas-base
-
-
-
-
+6. sudo apt install liblbfgs-dev liblbfgs0
 
 
 
