@@ -113,14 +113,15 @@ hSol.sol( );
 
 //<-------------------------------
 		
-		// // // double tol=1e-8;
+		double tol=1e-8;
+		int dimx=2;
+		int dimu=1;
+		Pro mypro(dimx,dimu,0,1,1,1);
 		
-		// // // Pro mypro(dimx,dimu,0,1,1,1);
-		
-		// // // mypro.set_daef(my_fxut);
-		// // // mypro.set_opt_int(my_opt_L);
-		// // // mypro.set_opt_phi(my_opt_phi);
-		// // // mypro.set_opt_pLp(	 pLpx,	  pLpu);
+		mypro.set_daef(Pro1::my_fxut);
+		mypro.set_opt_int(Pro1::my_opt_L);
+		mypro.set_opt_phi(Pro1::my_opt_phi);
+		mypro.set_opt_pLp(Pro1::pLpx,Pro1::pLpu);
 
 	 
 		

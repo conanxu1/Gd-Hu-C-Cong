@@ -130,8 +130,44 @@ void Rn_copy(double* tm,Rn tM,int n)
 {
 	memcpy(tM, tm, (n)*sizeof(double));
 }
+
+
+//向量求和
+void  Rn_xpy(Rn  &xx,Rn  &yy,int n,   Rn  &xpy  )
+{
+	 for(int i=0;i<n;i++)
+	{
+		xpy[i]=xx[i]+yy[i];
+	}	
+ 
+}
+
+//向量做差
+void  Rn_xmy(Rn  &xx,Rn  &yy,int n,Rn  &xmy )
+{
+	for(int i=0;i<n;i++)
+	{
+		xmy[i]=xx[i]-yy[i];
+	}	
+}
+
+//向量点积
+void   Rn_ax(double aa,Rn  &xx,int n,Rn  &ax)
+{
+	for(int i=0;i<n;i++)
+	{
+		ax[i]=aa*xx[i];
+	}	
+ 
+}
+
+
  
 #endif
+
+
+
+
 
 
 #ifdef USE_EIGEN	
@@ -153,6 +189,29 @@ void Rn_copy(double* tm,Rn  (&tM),int n)
 	for(int i=0;i<n;i++)
 		(tM)(i)=tm[i];
 }
+
+
+
+
+void  Rn_xpy(Rn  (&tX),Rn  (&tY),int n,Rn  (&tZ)     )
+{
+	 tZ=tX+tY;
+}
+
+//向量做差
+void  Rn_xmy(Rn  (&tX),Rn  (&tY),int n,Rn  (&tZ)     )
+{
+	tZ=tX-tY;
+ }
+
+//向量点积
+void  Rn_ax(double aa,Rn  (&tX),int n,Rn  (&tY))
+{
+	tY=aa*tX;
+}
+
+
+
 
 #endif
 
@@ -227,6 +286,32 @@ void Pro :: set_opt_pLp(	pfpx tpLpx,	pfpx tpLpu)
 	this->pLpx=tpLpu;	
 	this->pLpu=tpLpu;	
 }
+
+
+Rn Pro :: xc(Rn xtk,Rn xtk1,Rn utk,Rn utk1,double tk,double tk1      ,dae_f fxut)
+{
+	double h=tk1-tk;
+	
+	Rn txc=Rninit(this->dimx);
+	Rn tmp1=Rninit(this->dimx);
+	Rn tmp2=Rninit(this->dimx);
+	
+
+	
+	Rn fk	=fxut(xtk 	,utk 	,tk   );
+	Rn fk1	=fxut(xtk1 	,utk1 	,tk1 );
+	
+	Rn_xpy(xtk,xtk1,(this->dimx), tmp1);
+	Rn_xmy(fk ,fk1  ,(this->dimx),  tmp2);
+	
+	Rn_ax(0.5,tmp1,(this->dimx),tmp1);
+	Rn_ax(h/0.8,tmp2 ,(this->dimx)  ,tmp2);
+	
+	Rn_xpy(tmp1,tmp2,(this->dimx), txc);
+	
+	return txc;
+}		
+
 
 
 

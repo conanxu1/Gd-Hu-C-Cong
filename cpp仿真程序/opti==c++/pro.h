@@ -11,6 +11,12 @@
 #include <algorithm>
 #include "nlopt.h"
 
+#include <complex.h>
+
+
+#define PI acos(-1.0)
+
+
 using namespace std;
 
 
@@ -51,11 +57,17 @@ using namespace std;
 
 #endif
 
+
+
+
 #ifdef USE_EIGEN
 void double2mat(double *d_a,Rmn &m_a,int m,int n);
 void mat2double(Rmn &m_a,double *d_a,int m,int n);
 void double2vex(double *d_a,Rn &m_a,int m);
 void vec2double(Rn &m_a,double *d_a,int m);
+
+
+
 
 #endif
 
@@ -72,10 +84,39 @@ Rmn Rmninit(int m,int n);
 
 
 
-
+#ifdef USE_EIGEN
 void Rmn_copy(double* tm, Rmn (&ptM),int m,int n);
 void Rn_copy(double* tm,Rn  (&tM),int n);
  
+void  Rn_xpy(Rn  (&tX),Rn  (&tY),int n,Rn  (&tZ)     );
+ //向量求和
+
+void  Rn_xmy(Rn  (&tX),Rn  (&tY),int n,Rn  (&tZ)     );
+//向量做差
+
+void  Rn_ax(double aa,Rn  (&tX),int n,Rn  (&tY));
+ //向量点积
+ #endif
+
+
+#ifndef USE_EIGEN
+
+void Rmn_copy(double* tm,Rmn tM,int m,int n);
+void Rn_copy(double* tm,Rn tM,int n);
+
+void  Rn_xpy(Rn  &xx,Rn  &yy,int n,  Rn  &xpy  );
+ //向量求和
+
+void  Rn_xmy(Rn  &xx,Rn  &yy,int n,Rn  &xmy );
+//向量做差
+
+void   Rn_ax(double aa,Rn  &xx,int n,Rn  &ax);
+//向量点积
+
+ #endif
+
+
+
 
 
 typedef Rn (*dae_f)(Rn x ,      Rn u     ,double        t );
@@ -308,6 +349,15 @@ class Pro
 		void set_opt_pLp(pfpx pLpx,	pfpx pLpu);
 
 		friend void Sol::set(  );
+		
+		
+		
+		Rn xc(Rn xtk,Rn xtk1,Rn utk,Rn utk1,double tk,double tk1      ,dae_f fxut);
+		
+		
+		
+		
+		
 };
 
 

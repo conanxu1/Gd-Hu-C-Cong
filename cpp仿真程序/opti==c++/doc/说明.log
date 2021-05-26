@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.3.13)  21 MAY 2021 10:02
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.3.13)  24 MAY 2021 11:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -261,11 +261,7 @@ File: ctex.cfg 2019/05/29 v2.4.16 Configuration file (CTEX)
 LaTeX Warning: Unused global option(s):
     [a4].
 
-(./说明.aux
-
-LaTeX Warning: Label `table1' multiply defined.
-
-)
+(./说明.aux)
 \openout1 = `说明.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -352,21 +348,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    Font shape `TU/SimSun(0)/m/sl' in size <10.53937> not avail
 able
 (Font)              Font shape `TU/SimSun(0)/m/it' tried instead on input line 
-99.
+95.
  [1
 
-] (./说明.aux)
+] [2] (./说明.aux)
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
  6914 strings out of 479418
  205872 string characters out of 5886785
- 495487 words of memory out of 5000000
+ 496487 words of memory out of 5000000
  24386 multiletter control sequences out of 15000+600000
  533520 words of font info for 48 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 56i,8n,68p,342b,255s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,8n,68p,342b,287s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 说明.pdf (1 page).
+Output written on 说明.pdf (2 pages).

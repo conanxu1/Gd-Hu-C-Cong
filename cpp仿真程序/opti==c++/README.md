@@ -22,6 +22,7 @@ Linear DDE Solver
 - opencv
 - cmake 
 - make
+- openblas
 
 
 
@@ -30,9 +31,14 @@ Linear DDE Solver
 
 
 1. sudo *apt*-get install g++ cmake make
-2.  sudo *apt*-get install lib*nlopt*-dev
+2.  sudo *apt*-get install libnlopt-dev
 3. sudo apt install libopencv-dev
-4. sudo apt-get install lib*eigen3*-dev 
+4. sudo apt-get install libeigen3-dev 
+5. sudo apt install libopenblas-dev libopenblas-base
+
+
+
+
 
 
 
@@ -105,11 +111,19 @@ endif(${SMALL_SCALE})
 
 
 
+为了避免同一个头文件被包含（include）多次，C/C++中有两种宏实现方式：一种是#ifndef方式；另一种是#pragma once方式
 
 
 
+# stdarg.h这个头文件的作用
 
 
+
+```cpp
+foo(3, x, y, z);
+foo(6, x, y, z, a, b, c);
+//不定长参数
+```
 
 
 
