@@ -1,7 +1,13 @@
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
+
+
+#ifndef MYFUN
+#define MYFUN
 #include "myfun.h"
+#endif
+
 
 
 //J=phi(x0,t0,xf,tf)+int0 t    g(x,u,t)

@@ -33,20 +33,20 @@ cout<<"hhh";
 
 
 
-print_vec(dp,6); 
+print_mat(dp,6,1); 
 free(dp);
 dp=NULL;
 
 cout<<"-----\n";
 dp=Legendre::LGL_Root(19);
-print_vec(dp,20); 
+print_mat(dp,20,1); 
 free(dp);
 dp=NULL;
 
 
 
 dp=Legendre::LGL_Wk(2);
-print_vec(dp,3); 
+print_mat(dp,3,1); 
 free(dp);
 dp=NULL;
 
@@ -94,7 +94,7 @@ Rn x0=Rninit(Ex1_Scale->dimx);
 Rmn_copy(ttA,A,Ex1_Scale->dimx,Ex1_Scale->dimx);
 Rmn_copy(ttB,B,Ex1_Scale->dimx,Ex1_Scale->dimu);
 Rn_copy(tx0,x0,Ex1_Scale->dimx);
-Euler_Ode_Sol hSol(Ex1_Scale->dimx,Ex1_Scale->dimu,Ex1_Scale->t0,Ex1_Scale->tf,100000000);
+Euler_Ode_Sol hSol(Ex1_Scale->dimx,Ex1_Scale->dimu,Ex1_Scale->t0,Ex1_Scale->tf,10000000);
 hSol.set(A,B,Pro1::myut,x0 );
 hSol.sol( );
 //--->

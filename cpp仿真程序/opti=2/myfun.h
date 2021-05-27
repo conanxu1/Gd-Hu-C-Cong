@@ -1,40 +1,9 @@
-#pragma once
-
-#define AAA 1
-
-
-
-#ifdef  AAA
 #include <cblas.h>
-#include <lapacke.h>
+
+
 #include <lapacke_config.h>
 #include <lapacke_utils.h>
-
-
-
-#else
-#include <cblas.h>
-#include <lapacke_config.h>
-#include <lapacke_utils.h>
-#include "fftw3.h"
-
-
 #include <lapacke.h>
-
-#endif
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

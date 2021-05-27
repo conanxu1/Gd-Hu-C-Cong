@@ -23,17 +23,27 @@ message(${USE_EIGEN})
 
 option(SMALL_SCALE "小规模"  OFF)
 if(SMALL_SCALE)
-add_definitions(-DSMALL_SCALE)
+	add_definitions(-DSMALL_SCALE)
 endif()
 message("\nSMALL_SCALE")
 message(${SMALL_SCALE})
 
-option(LARGE_SCALE "大规模"  ON)
+option(LARGE_SCALE "大规模"  OFF)
 if(LARGE_SCALE)
-add_definitions(-DLARGE_SCALE)
+	add_definitions(-DLARGE_SCALE)
 endif()
 message("\nLARGE_SCALE")
 message(${LARGE_SCALE})
+
+
+
+
+
+option(JISHI "option for time" OFF)
+if (JISHI)
+	message("计时")
+	add_definitions(-DJISHI)
+endif()
 
 
 

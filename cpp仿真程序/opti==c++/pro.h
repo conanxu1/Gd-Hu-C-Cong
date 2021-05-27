@@ -129,11 +129,8 @@ typedef Rn (*Rn_f)(double t);
 
 
 //工具函数声明
-template <typename T_Rn>
-void print_vec(T_Rn x,int n);
-
-
-
+ 
+void print_vec(Rn x,int n);
 void print_mat(double* Ma,int m,int n);
 
 

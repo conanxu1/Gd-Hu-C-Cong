@@ -5,7 +5,6 @@ cmake ..
 make -j4
 
 
-./QOP
 
 
 # # # ./a

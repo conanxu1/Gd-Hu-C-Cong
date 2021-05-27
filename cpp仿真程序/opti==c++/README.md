@@ -23,6 +23,8 @@ Linear DDE Solver
 - cmake 
 - make
 - openblas
+- lapacke
+- gmp(整数库)
 
 
 
@@ -35,7 +37,14 @@ Linear DDE Solver
 3. sudo apt install libopencv-dev
 4. sudo apt-get install libeigen3-dev 
 5. sudo apt install libopenblas-dev libopenblas-base
-6. sudo apt install liblbfgs-dev liblbfgs0
+6. sudo apt install liblbfgs-dev liblbfgs0 liblapacke-dev
+7. sudo apt-get install libfftw3-dev 
+
+
+
+
+
+https://github.com/chokkan/liblbfgs
 
 
 

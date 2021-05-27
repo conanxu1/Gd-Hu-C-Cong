@@ -229,8 +229,8 @@ R testf(Rn x )
 
 
 
-template <typename T_Rn>
-	void print_vec(T_Rn x,int n)
+
+void print_vec(Rn x,int n)
 	{
 		cout<<"[";
 		for(int i=0;i<n-1;i++)
@@ -248,7 +248,7 @@ void print_mat(double* Ma,int m,int n)
 		{
 			for(int j=0;j<n;j++)
 			{
-				cout<<setprecision(10)<<Ma[i*m+j]<<",";
+				cout<<setprecision(10)<<Ma[i*n+j]<<",";
 			}
 			cout<<endl;
 		}		
@@ -742,10 +742,13 @@ void Euler_Ode_Sol:: sol( )
 
 	(this->solt)=(R*)malloc( (lenN+1)*sizeof(R ));
 
+
+	#ifdef JISHI
 	clock_t starttime, endtime;
 	double totaltime;
 	starttime = clock();
-
+	#endif
+	
 
 
 
@@ -770,7 +773,7 @@ void Euler_Ode_Sol:: sol( )
 			  
 			  
 			   
-			  print_vec( (this->solx),dimx                 );
+			  print_mat( (this->solx),dimx    ,1    );
 			  
 			  
 			  
@@ -795,11 +798,14 @@ void Euler_Ode_Sol:: sol( )
   
 
   
-		print_vec((this->solx)+lenN*(this->dimx) ,dimx);
-   		endtime = clock();
-	    	totaltime = (double)( (endtime - starttime)/(double)CLOCKS_PER_SEC );
-	    	cout<<"\ntime:"<< totaltime<<endl;
-			  
+		print_mat((this->solx)+lenN*(this->dimx) ,dimx,1);
+		
+		
+		#ifdef JISHI
+			endtime = clock();
+			totaltime = (double)( (endtime - starttime)/(double)CLOCKS_PER_SEC );
+			cout<<"\ntime:"<< totaltime<<endl;
+		#endif
 			  
 		#endif
 		#endif
