@@ -23,29 +23,33 @@
 int main()
 {
 
-double H[4]={5,-0.5,-0.5,1};
-
-double h[2]={-2,-6};
+double H[2*2]={5,-0.5,\
+							-0.5,1};
+double h[2]={-2,\
+					   -6};
 double be[1]={-7};
 double Ae[2]={-4,-5};
 
-double bi[2]={-2,-2};
+double bi[2]={-2,\
+						-2};
 
-double Ai[4]={-1,-8,1,-5};
+double Ai[2*2]={-1,-8,\
+						1,-5};
 
 int e=1;
 int ie=2;
 
 double *lam;
 lam=cshi(e+ie);
-double x0[2]={0,0};
+double x0[2]={0,\
+						0};
  
 
 
 qxt(H,	h,be ,Ae,	bi,	Ai,2,	e,ie,x0,lam);
 
 //fanhuiyouwenti  haiyou buchengli dewenti
-//printf("jj\n");
+printf("<-------------------------------------->\n");
 shuchud(x0,1,2);
 shuchud(lam,1,3);
 printf("%.15f",lam[3]);

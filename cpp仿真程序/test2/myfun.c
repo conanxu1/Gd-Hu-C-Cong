@@ -794,30 +794,50 @@ void sduijiao(double* p,int m,int n,double* Q2,double* V1,double* B)
 
 double* danwei(int m,int n)
 {
+	
+	
+	
 	double* y =(double *)malloc(m*n*sizeof(double));
+	
 	memset(y,0,m*n*sizeof(double));
+	
+	
 	if(m>n)
-	{
-		for(int i=0;i<n;i++)
-		y[i*n+i]=1.0;
-		}
+	{for(int i=0;i<n;i++)
+	y[i*n+i]=1.0;
+//(i,i)(i,j)
+	}
 	else
-	{
-		for(int i=0;i<m;i++)
-		y[i*n+i]=1.0;
+	{for(int i=0;i<m;i++)
+	y[i*n+i]=1.0;
+	//(i,i)(i,j)
 	}
 	return y;
+
+
+
+	
+	
 }
 
 
 
 void house(double* a,int dim,int i)
 {
+	
+	
+	
 	if(a[i]<0)
 	a[i]=a[i]-sqrt(cblas_ddot(dim,a,1,a,1));
 	else
 	a[i]=a[i]+sqrt(cblas_ddot(dim,a,1,a,1));
+	
 	// cblas_daxpy(dim,1/sqrt(dot(a,a,dim))-1,a,1, a, 1);
+	
+	
+	
+	
+	
 }
 
 
@@ -2338,327 +2358,6 @@ printf("\n%d\n",*a);
 	
 // }
 
-int erci(
-		double *H,		//hessian/2
-		double *h,		//原问题grad
-		double *be,		//b   等式约束
-		double *Ae,		//系数
-		double *bi,		////b   不等式约束
-		double *Ai,
-		int dim,		//问题的维数
-		int e,			//等式个数
-		int ie,			//不等式个数
-		double *xk,
-		double *lam)
-{
-	//等式约束
-	 
-	//[G,-A;-A' 0] A等式
-
-	int nu;
-
-	double *G=(double *)malloc(dim*dim*sizeof(double));
-
-
-	cblas_daxpby(dim*dim, 2, H, 1, 0, G, 1);
-	int qinum=0;
-	double ep=1e-6;
-	//指标集 自动要求等式约束 
-	int *A0=(int *)malloc((ie)*sizeof(int));
-	int *tp=(int *)malloc((ie)*sizeof(int));
-	//A0>=0
-
-	double *tg=(double *)malloc(dim*sizeof(double));
-	double *zuoyong=(double *)malloc((e+ie)*dim*sizeof(double));
-	double *tb=(double *)malloc((e+ie)*sizeof(double));
-	double alpha=0;
-	double *dk=(double *)malloc(dim*sizeof(double));
-	double *tbi=(double *)malloc(ie*sizeof(double));
-
-
-
-
-	double test;
-	double *ait=(double *)malloc(dim*sizeof(double));
-	double zuixiao;
-	int index;
-
-	memset(A0,-1,ie*sizeof(int));
-
-	memcpy(tb,be,e*sizeof(double));
-	memcpy(zuoyong,Ae,dim*e*sizeof(double));
-	memcpy(tg,h,dim*sizeof(double));
-
-
-
-
-
-
-	memcpy(tbi,bi,ie*sizeof(double));
-
-
-
-
-
-
-	cblas_dgemm(CblasRowMajor, CblasNoTrans,CblasNoTrans, ie, 1,dim, 1,Ai, dim,xk, 1,-1,tbi,1 );
-
-
-
-	index=0;  //借用
-
-
-	//printf("Ai\n");
-	//shuchud(Ai,ie,dim);
-	//printf("xk\n");
-	//shuchud(xk,dim,1);
-
-	//printf("bi\n");
-	//shuchud(bi,ie,1);
-
-	printf("tbi\n");
-	shuchud(tbi,ie,1);
-	//printf("H\n");
-	//shuchud(H,dim,dim);
-
-
-
-
-	for(int i=0;i<ie;i++)
-	{
-		if(tbi[i]<ep) 
-				{	
-			
-					qinum+=1;
-					A0[qinum-1]=i;
-					for(int tt=0;tt<dim;tt++)
-					{zuoyong[dim*e+(qinum-1)*dim+tt]=Ai[dim*i+tt];
-				
-				
-				
-					}
-					
-				}
-	}
-
-
-
-	//定义其作用集 函数 由初始点起作用集
-
-
-
-
-
-	 
-
-	//xk=tg
-
-	/////***//d
-
-	//printf(" G\n");
-	//shuchud(G,dim,dim);	
-
-	int ho=0;
-
-
-	//////diedai
-	while(1)
-	{
-	ho++;
-	printf("\n%d      >>>>>>>>>>>>>>>>>>>>>>>>>>>>d>>>>>>>>>>>>\n",ho);
-
-	printf(" dangqiandianxk\n");
-	shuchud(xk,dim,1);	
-	//	printf("\n\n\n\n\n\n\nqiz\n");
-	//	shuchui(A0,ie,1);
-	//	printf("..\n");
-		// printf("\n\n\nqinum\n");
-		// printf("%d",qinum);
-		// printf("\n\n\nhhhhhh\n");
-		// shuchud(h,1,dim);
-		
-
-
-
-
-		cblas_daxpby(dim, 1,h, 1, 0, tg, 1);
-		
-		cblas_dgemm(CblasRowMajor, CblasNoTrans,CblasNoTrans, dim, 1,dim, 1,G, dim,xk, 1,1,tg,1 );	
-		
-
-
-		memset(tb,0,(e+ie)*sizeof(double));
-
-		// printf("\n++...G \n");
-		// shuchud(G,dim,dim);
-		
-		// printf("ziwenti...zuoyong \n");
-		// shuchud(zuoyong,e+qinum,dim);
-		// printf("ziwentitidu...\n");
-		// shuchud(tg,dim,1);
-		//printf("++... %d\n",e+qinum);
-		//printf("..%lf..\n",tb[0]);
-
-
-
-
-		myqp(H,zuoyong,tg,tb,dim,(e+qinum));
-
-		memcpy(dk,tg,dim*sizeof(double));
-			
-		 printf("++...dk\n");
-		 shuchud(tg,dim,1);	
-		// printf("++...lam_ki\n");
-		// shuchud(tb,e+qinum,1);	
-		// printf("++...zuoyong \n");
-		// shuchud(zuoyong,e+qinum,dim);
-
-			
-
-	printf("norm\n%15.15f",cblas_dasum(dim, tg,1));
-		
-		//dk=0
-		if(cblas_dasum(dim, tg,1)<ep)
-		{
-
-				printf("\n--------------------------------------欧克\n");
-				
-			zuixiao=0;
-			index=-1;
-			for(int i=0;i<qinum;i++)
-			{	
-				if(tb[e+i]<zuixiao)
-					{index=i;
-					zuixiao=tb[e+i];
-					}	
-			}
-			if(index>=0)
-			{printf("index%d\n",index);
-				if(index<qinum-1)
-				{
-				A0[index]=A0[qinum-1];
-				A0[qinum-1]=-1;
-				for(int tt=0;tt<dim;tt++)
-					{zuoyong[e*dim+index*dim+tt]=zuoyong[e*dim+ (qinum-1)*dim+tt];
-					//用最后的覆盖
-					}
-				qinum=qinum-1;
-				}
-			 else
-				{A0[qinum-1]=-1;
-				qinum=qinum-1;}	
-			}
-			else{
-
-			
-
-			for(nu=0;nu<e;nu++)
-			{lam[nu]=tb[nu];
-			
-			}
-			
-
-			for(nu=0;nu<ie;nu++)
-			{printf("???????%d",e+nu);
-			lam[e+nu]=0;
-			}
-			
-			for(nu=0;nu<qinum;nu++)
-			{
-			lam[e+A0[nu]]=tb[e+nu];
-			}
-
-			
-				// shuchud( ,e+qinum,1);
-
-	// ///gai x0weihao			
-				
-				printf("ffinishd\n");
-				return 1;
-			}
-		}
-		else
-		{	//alpha xk
-
-			index=-1;
-			zuixiao=1;
-			alpha=1;
-			memset(tp,0,ie*sizeof(int));
-			for(int j=0;j<qinum;j++)
-			{
-				if(A0[j]>=0)
-				{tp[A0[j]]=1;}
-			}
-			// printf("\n\n\n\n\n%d\n\nqiz\n",ie);
-			// shuchui(A0,ie,1);
-
-			// printf("bukexingji....\n");
-			// shuchui(tp,ie,1);
-			//alpha测试一遍
-			for(int j=0;j<ie;j++)
-			{	
-				//不属于的
-				if(tp[j]<1)
-				{for(int tt=0;tt<dim;tt++)
-				{ait[tt]=Ai[dim*j+tt];}
-				
-				
-
-				if(cblas_ddot(dim, ait, 1, dk,1)<0)
-				{
-
-					test=(bi[j]-cblas_ddot(dim, ait, 1, xk,1));
-					test=test/cblas_ddot(dim, ait, 1, dk,1);
-					//printf("%lf\n",test);		
-
-			if((test<zuixiao))
-						{zuixiao=test;
-						index=j;}
-				}}
-			printf("\n.dangqian.%lf..alpha",zuixiao);
-			}
-
-
-	 
-
-
-
-
-			
-			cblas_daxpby(dim,zuixiao,dk,1,1,xk,1);
-		/////////
-
-
-
-			if(index>-1)
-				{qinum=qinum+1;
-				A0[qinum-1]=index;
-				for(int tt=0;tt<dim ;tt++)
-				{zuoyong[e*dim+(qinum-1)*dim+tt]=Ai[index*dim+tt];}
-				
-				}
-		}
-
-		
-	}
-			
-
-
-
-
-
-	free(ait);
-	free(dk);
-	free(tb);
-		
-		
-	free(tg);
-	free(zuoyong);
-	free(A0);
-	free(G);
-
-
-	}
 
 
 
